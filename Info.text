@@ -1,0 +1,15 @@
+For ignore files check out gitignore.io
+env --> created using pip virtualenv
+venv --> created using py env
+For Local user only:
+
+If in windows and 3.5 along with 3.6 installed:
+python is for 3.5.3
+py is for 3.6
+
+source name/scripts/activate
+
+Start Project:
+    - django-admin startproject namegoes here
+
+
