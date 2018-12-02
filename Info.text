@@ -12,4 +12,7 @@ source name/scripts/activate
 Start Project:
     - django-admin startproject namegoes here
 
+Add Application(app):
+    - python manage.py startapp pages
+
 

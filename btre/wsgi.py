@@ -1,3 +1,4 @@
+# Web server gateway interface
 """
 WSGI config for btre project.
 

@@ -1,0 +1,1 @@
+-Changing the pages.apps.PagesConfig -> did that break anything if changing name? 
