@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'upv8454-h85b49&e*hf3mr_)9rda2z%htl=ssh!h_n5sm!sqzu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True # In development you want this to be true, before deploy change to true
+DEBUG = True  # In development you want this to be true, before deploy change to true
 
-ALLOWED_HOSTS = [] # Ip addesses for allowed host
+ALLOWED_HOSTS = []  # Ip addesses for allowed host
 
 
 # Application definition
@@ -38,11 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Installed apps 
+    # Installed apps
     'apps.pages',
+    'apps.realtors',
+    'apps.listings',
 ]
 
-MIDDLEWARE = [ # lot of these are security based
+MIDDLEWARE = [  # lot of these are security based
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -51,7 +53,7 @@ MIDDLEWARE = [ # lot of these are security based
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-# Initial url files -> name of project and urls 
+# Initial url files -> name of project and urls
 ROOT_URLCONF = 'btre.urls'
 
 TEMPLATES = [
@@ -122,11 +124,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 # path for static files and other files
 
-#Static root folder 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+"""Static root folder --> not sure if the command to collect static (python manage.py collectstatic) would be done towards the end since it is done once we deploy it on a server
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')"""
 
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'btre/static')
+    # we could name the 'static' folder something else if we wanted to
 ]
