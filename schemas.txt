@@ -1,0 +1,62 @@
+MODEL/DB FIELDS
+
+### LISTING                 --attributes for a listing table
+id: INT --> every table needs an id column 
+realtor: INT (FOREIGN KEY [realtor])    --key from the realtor model
+title: STR      
+address: STR
+city: STR
+state: STR
+zipcode: STR
+description: TEXT           --textfield
+price: INT
+bedrooms: INT               -- we could also implement half bathrooms so float. 
+bathrooms: INT
+garage: INT [0]             -- 0 as defult
+sqft: INT
+lot_size: FLOAT
+is_published: BOOL [true] 
+list_date: DATE
+photo_main: STR             -- shown as default
+photo_1: STR
+photo_2: STR
+photo_3: STR
+photo_4: STR
+photo_5: STR
+photo_6: STR
+
+
+### REALTOR
+id: INT   --> every table needs an id column 
+name: STR                   -- we'll do whole name / maybe change later
+photo: STR
+description: TEXT
+email: STR
+phone: STR
+is_mvp: BOOL [0]            -- as realtor of the month 
+hire_date: DATE
+
+
+### CONTACT
+id: INT
+user_id: INT                -- which user sent the request
+listing: INT
+listing: INT                -- as to what listing it is being requested
+listing_id: INT
+name: STR
+email: STR
+phone: STR
+message: TEXT
+contact_date: DATE
+
+
+
+
+
+
+
+
+
+
+
+
