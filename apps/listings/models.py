@@ -1,10 +1,9 @@
 from django.db import models
 from datetime import datetime
-from realtors.models import Realtor
+from ..realtors.models import Realtor
+
 
 # class should be the singular version of the the models
-
-
 class Listing(models.Model):  # basically we are extending the core model
     # this ForeignKey is linked to the "Realtor" model
     realtor = models.ForeignKey(Realtor, on_delete=models.DO_NOTHING)

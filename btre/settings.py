@@ -138,8 +138,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 # path for static files and other files
 
-"""Static root folder --> not sure if the command to collect static (python manage.py collectstatic) would be done towards the end since it is done once we deploy it on a server
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')"""
+"""Static root folder --> not sure if the command to collect static (python manage.py collectstatic) would be done towards the end since it is done once we deploy it on a server"""
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = '/static/'
 
@@ -147,3 +148,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'btre/static')
     # we could name the 'static' folder something else if we wanted to
 ]
+
+# Media Folder Settings
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

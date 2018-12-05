@@ -16,3 +16,5 @@ Add Application(app):
     - python manage.py startapp pages
 
 
+- jose
+
