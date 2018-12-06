@@ -1,1 +1,4 @@
 -Changing the pages.apps.PagesConfig -> did that break anything if changing name? 
+
+
+- Why is it automatically bringing up the name rather than anything else for listing.realtor

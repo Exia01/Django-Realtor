@@ -37,12 +37,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',  # brings in humanize
+
 
     # Installed apps
     'apps.pages',
     'apps.realtors',
     'apps.listings',
 ]
+"""
+https://docs.djangoproject.com/en/2.1/ref/contrib/humanize/ 
+"""
 
 MIDDLEWARE = [  # lot of these are security based
     'django.middleware.security.SecurityMiddleware',
