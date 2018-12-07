@@ -2,6 +2,7 @@ from django.shortcuts import render
 # from django.http import HttpResponse
 from ..listings.models import Listing
 from ..realtors.models import Realtor
+from ..listings.choices import (price_choices, bedroom_choices, state_choices)
 
 """ req is short for request """
 
@@ -15,6 +16,7 @@ def index(request):
         # only published pages will show along with 3 because of split [0:3]
     context = {
         'listings': listings,
+        # passing dictionaries
         'state_choices': state_choices,
         'price_choices': price_choices,
         'bedroom_choices': bedroom_choices,

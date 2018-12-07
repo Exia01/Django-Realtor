@@ -2,3 +2,5 @@
 
 
 - Why is it automatically bringing up the name rather than anything else for listing.realtor
+
+- Search filtering was confusing

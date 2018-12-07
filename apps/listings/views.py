@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from .models import Listing
+from .choices import (price_choices, bedroom_choices, state_choices)
 
 #import paginator
 from django.core.paginator import (Paginator, EmptyPage, PageNotAnInteger)
@@ -18,39 +19,51 @@ def index(req):
 
     # creates a dictionary to pass a parameter
     context = {
-        'listings': paged_listings
+        'listings': listings,
+        # passing dictionaries
+        'state_choices': state_choices,
+        'price_choices': price_choices,
+        'bedroom_choices': bedroom_choices,
     }
 
     return render(req, 'listings/listings.html', context)
 
 
 def listing(req, listing_id):
-    # listing = get_object_or_404(Listing, pk=listing_id)
-    # context = {
-    #     'listing': listing
-    # }
-    return render(req, 'listings/listing.html')
+    # This is a built in page "404"
+
+    # listing takes primary key pass through url and the model
+    listing = get_object_or_404(Listing, pk=listing_id)
+    context = {
+        'listing': listing
+    }
+    return render(req, 'listings/listing.html', context)
 
 
 def search(req):
+    # first we pull all of them we will filter them out first
     queryset_list = Listing.objects.order_by('-list_date')
-    # queryset_list = Listing.objects.all()
+    listings = Listing.objects.all()
 
     # Keywords
+    # this test checks for the keywords in the form
     if 'keywords' in req.GET:
-        keywords = req.GET['keywords']
+        # if it does exist, assign it
+        keywords = req.GET['keywords'] #looking for a field name in the html
         print(keywords)
+        # we don't want to pass empty strings
         if keywords:
             queryset_list = queryset_list.filter(
                 description__icontains=keywords)
+            # not exact match but it contains
 
-    # City
+     # City
     if 'city' in req.GET:
         city = req.GET['city']
         print(city)
         if city:
             queryset_list = queryset_list.filter(
-                city__iexact=city)
+                city__iexact=city)  # exact but not case sensitive
 
     # State
     if 'state' in req.GET:
@@ -66,7 +79,7 @@ def search(req):
         print(bedrooms)
         if bedrooms:
             queryset_list = queryset_list.filter(
-                bedrooms__lte=bedrooms)
+                bedrooms__lte=bedrooms)  # up to number bedrooms
 
     # Price
     if 'price' in req.GET:
@@ -74,13 +87,14 @@ def search(req):
         print(price)
         if price:
             queryset_list = queryset_list.filter(
-                price__lte=price)
+                price__lte=price)  # price up to
 
     context = {
+        'listings': queryset_list,
+        'values': req.GET, # obtaining all queries as values 
         'state_choices': state_choices,
+        # 'cityValues': cityValues,
         'price_choices': price_choices,
         'bedroom_choices': bedroom_choices,
-        'listings': queryset_list,
-        'values': req.GET
     }
     return render(req, 'listings/search.html', context)
