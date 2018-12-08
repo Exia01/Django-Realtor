@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'apps.pages',
     'apps.realtors',
     'apps.listings',
+    'apps.accounts',
+
 ]
 """
 https://docs.djangoproject.com/en/2.1/ref/contrib/humanize/ 

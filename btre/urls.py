@@ -14,6 +14,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', include('apps.pages.urls')),
     path('listing/', include('apps.listings.urls')),
+    path('accounts/', include('apps.accounts.urls')),
     # path('realtors/', include('apps.realtors.urls')),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
