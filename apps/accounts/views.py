@@ -1,10 +1,11 @@
 from django.shortcuts import (render, redirect)
+from django.contrib import messages
 
 
 def register(req):
     if req.method == 'POST':
         # Register User
-        print('SUBMITTED REG')
+        messages.error(req, 'Testing error message')
         return redirect('register')
     else:
         return render(req, 'accounts/register.html')
@@ -12,7 +13,7 @@ def register(req):
 
 def login(req):
     if req.method == 'POST':
-        # Register User
+        # log the user
         print('SUBMITTED REG')
         return redirect('register')
     else:
