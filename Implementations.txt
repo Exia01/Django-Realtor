@@ -1,0 +1,1 @@
+Separate the onclick in dashboard to main js 

@@ -2,6 +2,7 @@ from django.shortcuts import (render, redirect)
 from django.contrib import messages, auth
 # importing default django user model
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 
 def register(req):
@@ -29,12 +30,13 @@ def register(req):
                     # Passes validation
                     user = User.objects.create_user(
                         username=username, password=password, email=email, first_name=first_name, last_name=last_name)
-                        # Log in after register
-                        #auth.login(req,user)
-                        # messages.success(req, 'You are now logged in')
-                        # return redirect('index')
+                    # Log in after register
+                    # auth.login(req,user)
+                    # messages.success(req, 'You are now logged in')
+                    # return redirect('index')
                     user.save()
-                    messages.success(req, 'You are now registered and can log in')
+                    messages.success(
+                        req, 'You are now registered and can log in')
                     return redirect('login')
         else:
             messages.error(req, 'Passwords do not match')
@@ -46,16 +48,27 @@ def register(req):
 def login(req):
     if req.method == 'POST':
         # log the user
-        print('SUBMITTED REG')
-        return redirect('register')
-    else:
-        return render(req, 'accounts/register.html')
+        username = req.POST['username']
+        password = req.POST['password']
+        user = auth.authenticate(username=username, password=password)
+
+        if user is not None:  # if we find user
+            auth.login(req, user)  # authenticate == log in
+            messages.success(req, 'You are now logged in')
+            return redirect('dashboard')
+        else:
+            messages.error(req, 'Invalid Credentials')
+            return redirect('login')
     return render(req, 'accounts/login.html')
 
 
 def logout(req):
-    return redirect('index')
+    if req.method == 'POST':
+        auth.logout(req)
+        messages.success(req, 'You are now logged out')
+        return redirect('index')
 
 
+@login_required(login_url='login')
 def dashboard(req):
     return render(req, 'accounts/dashboard.html')
