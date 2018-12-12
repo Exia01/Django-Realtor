@@ -31,15 +31,15 @@ def contact(req):
 
         contact.save()
 
-        # Send mail
-        send_mail(
-            'Property Listing Inquiry',
-            'There has been an inquiry for ' + listing + '. Sign into the admin panel for more info',
-            'Youremail',
-            [realtor_email, 'extraemail@mail.com'],
-            fail_silently=False
+        # # Send mail
+        # send_mail(
+        #     'Property Listing Inquiry',
+        #     'There has been an inquiry for ' + listing + '. Sign into the admin panel for more info',
+        #     'Youremail',
+        #     [realtor_email, 'extraemail@mail.com'],
+        #     fail_silently=False
 
-        )
+        # )
 
         messages.success(
             req, "Your request have been submitted, a realtor will get back to you soon!")

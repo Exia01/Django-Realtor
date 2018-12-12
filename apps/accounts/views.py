@@ -3,6 +3,7 @@ from django.contrib import messages, auth
 # importing default django user model
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from ..contacts.models import Contact
 
 
 def register(req):
@@ -71,4 +72,9 @@ def logout(req):
 
 @login_required(login_url='login')
 def dashboard(req):
-    return render(req, 'accounts/dashboard.html')
+    user_contacts = Contact.objects.order_by('-contact_date').filter(user_id=req.user.id)  #filtering out for logged in user
+    
+    context = {
+        'contacts':user_contacts
+    }
+    return render(req, 'accounts/dashboard.html', context)
