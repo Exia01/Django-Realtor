@@ -1,3 +1,5 @@
+INITIAL:
+
 MODEL/DB FIELDS
 
 ### LISTING                 --attributes for a listing table

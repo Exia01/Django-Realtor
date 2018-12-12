@@ -72,9 +72,10 @@ def logout(req):
 
 @login_required(login_url='login')
 def dashboard(req):
-    user_contacts = Contact.objects.order_by('-contact_date').filter(user_id=req.user.id)  #filtering out for logged in user
-    
+    user_contacts = Contact.objects.order_by(
+        '-contact_date').filter(user_id=req.user.id)  # filtering out for logged in user
+
     context = {
-        'contacts':user_contacts
+        'contacts': user_contacts
     }
     return render(req, 'accounts/dashboard.html', context)

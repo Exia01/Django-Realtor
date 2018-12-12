@@ -50,7 +50,7 @@ def search(req):
     if 'keywords' in req.GET:
         # if it does exist, assign it
         keywords = req.GET['keywords'] #looking for a field name in the html
-        print(keywords)
+        # print(keywords)
         # we don't want to pass empty strings
         if keywords:
             queryset_list = queryset_list.filter(
@@ -68,7 +68,7 @@ def search(req):
     # State
     if 'state' in req.GET:
         state = req.GET['state']
-        print(state)
+        # print(state)
         if state:
             queryset_list = queryset_list.filter(
                 state__iexact=state)
@@ -76,7 +76,7 @@ def search(req):
     # Bedrooms
     if 'bedrooms' in req.GET:
         bedrooms = req.GET['bedrooms']
-        print(bedrooms)
+        # print(bedrooms)
         if bedrooms:
             queryset_list = queryset_list.filter(
                 bedrooms__lte=bedrooms)  # up to number bedrooms
@@ -84,7 +84,7 @@ def search(req):
     # Price
     if 'price' in req.GET:
         price = req.GET['price']
-        print(price)
+        # print(price)
         if price:
             queryset_list = queryset_list.filter(
                 price__lte=price)  # price up to
